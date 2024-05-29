@@ -1,9 +1,10 @@
-SRC = Megaphone.cpp
+SRC = PhoneBook.cpp
+CLASS = PhoneBook.hpp Contact.hpp
 OBJ = $(SRC:%.cpp=obj/%.o)
 CC = c++
 FLAGS = -Wall -Werror -Wextra
 STD = -std=c++98
-NAME = megaphone
+NAME = phonebook
 
 all : $(NAME)
 
