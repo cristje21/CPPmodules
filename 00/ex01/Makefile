@@ -1,4 +1,4 @@
-SRC = PhoneBook.cpp
+SRC = PhoneBook.cpp main.cpp Contact.cpp
 INC = PhoneBook.hpp Contact.hpp
 OBJ = $(SRC:%.cpp=obj/%.o)
 CC = c++

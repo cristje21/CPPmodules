@@ -1,4 +1,6 @@
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
+#include "phonebook.h"
 
 PhoneBook::PhoneBook()
 {
@@ -7,5 +9,7 @@ PhoneBook::PhoneBook()
 
 void	add_contact()
 {
-	
+	Contact contact;
+
+	std::cin >> contact.fields[FIRST_NAME];
 };
