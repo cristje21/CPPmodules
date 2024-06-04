@@ -1,11 +1,12 @@
+
 #include "Contact.hpp"
 
-void Contact::getField(int field)
+std::string Contact::getField(int index)
 {
-	std::cout << field;
+	return (fields[index]);
 };
 
-void Contact::setField(int field)
+void Contact::setField(int index)
 {
-	std::cout << field;
+	std::cin >> fields[index];
 };

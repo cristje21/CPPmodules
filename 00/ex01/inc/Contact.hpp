@@ -1,7 +1,8 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include "phonebook.h"
+# include <string>
+# include <iostream>
 
 class Contact
 {
