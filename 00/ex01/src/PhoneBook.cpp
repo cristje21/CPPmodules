@@ -8,36 +8,26 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::add_contact()
 {
-	std::cout << "Firstname: ";
-	contacts[index].setField(FIRST_NAME);
-	std::cout << "Lastname: ";
-	contacts[index].setField(LAST_NAME);
-	std::cout << "Nickname: ";
-	contacts[index].setField(NICK_NAME);
-	std::cout << "Phonenumber: ";
-	contacts[index].setField(PHONE_NUMBER);
-	std::cout << "Darkest secret: ";
-	contacts[index].setField(DARKEST_SECRET);
-	index++;
-	if (index == 8)
+	contacts[index].fillContact();
+	if (index == 7)
 		index = 0;
+	else
+		index++;
 };
 
 void	PhoneBook::search()
 {
-	std::string x;
+	int	index;
+
 	for (int i = 0; i < 8; i++)
 	{
-		for (int j = 0; j < 4; j++)
-		{
-			x = contacts[i].getField(j);
-			if (j != 3)
-				std::cout << '|';
-		}
+		if (contacts[i].printSearchFields(i))
+			return ;
 	}
-	// in a loop
-	// get a contact display first 4 in format given
-	// add a newline and increment
-	// at the end ask for an index
-
+	std::cout << "enter index: ";
+	std::cin >> index;
+	if (index >= 0 && index <= 7)
+		contacts[index].printFoundFields();
+	else
+		std::cout << "index out of reach" << std::endl;
 };

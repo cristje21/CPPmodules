@@ -10,13 +10,9 @@ int	main(void)
 	{
 		std::cin >> prompt;
 		if (!prompt.compare("ADD"))
-		{
 			my_phonebook.add_contact();
-		}
 		else if (!prompt.compare("SEARCH"))
-		{
-			std::cout << "is searching: " << std::endl;
-		}
+			my_phonebook.search();
 		else if (!prompt.compare("EXIT"))
 			break ;
 	}

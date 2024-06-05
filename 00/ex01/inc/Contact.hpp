@@ -4,13 +4,25 @@
 # include <string>
 # include <iostream>
 
+typedef	enum
+{
+	FIRST_NAME,
+	LAST_NAME,
+	NICK_NAME,
+	PHONE_NUMBER,
+	DARKEST_SECRET,
+}	fields;
+
 class Contact
 {
 	private:
 		std::string	fields[5];
+		int			added;
 	public:
-		void		setField(int field);
-		std::string	getField(int field);
+					Contact();
+		void		fillContact();
+		void		printFoundFields();
+		int			printSearchFields(int index);
 };
 
 #endif
