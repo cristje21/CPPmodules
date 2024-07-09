@@ -2,19 +2,27 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include <stdbool.h>
 # include "Contact.hpp"
-# include <iostream>
-# include <string>
+
+# define MAX_CONTACTS 8
 
 class	PhoneBook
 {
 	private:
-	Contact	contacts[8];
+
+	int		search_options();
+	
+	Contact	contacts[MAX_CONTACTS];
 	int		index;
+	int		amount;
+
 	public:
+
 			PhoneBook();
-	void	add_contact();
+	bool	add();
 	void	search();
+
 };
 
 #endif

@@ -1,58 +1,62 @@
 
 #include "Contact.hpp"
+#include <iostream>
+#include <sstream>
 
-Contact::Contact()
-{
-	added = 0;
-}
+Contact::Contact() { added = 0; };
 
-void Contact::fillContact(void)
+bool	Contact::get_field(std::string field, int index)
 {
-	std::cout << "First name: ";
-	std::getline(std::cin, fields[FIRST_NAME]);
-	std::cout << "Last name: ";
-	std::getline(std::cin, fields[LAST_NAME]);
-	std::cout << "Nick name: ";
-	std::getline(std::cin, fields[NICK_NAME]);
-	std::cout << "Phone number: ";
-	std::getline(std::cin, fields[PHONE_NUMBER]);
-	std::cout << "Darkest secret: ";
-	std::getline(std::cin, fields[DARKEST_SECRET]);
-	std::cout << "Contact has been added succesfully" << std::endl;
-	added = 1;
+	std::string input;
+
+	while (input.empty())
+	{
+		std::cout << field;
+		if (!std::getline(std::cin, input))
+			return (false) ;
+	}
+	fields[index] = input;
+	return (true);
 };
 
-void Contact::printFoundFields(void)
+void	Contact::print(bool action)
 {
-	if (added == 0)
+	size_t	n;
+
+	if (action == FOUND)
 	{
-		std::cout << "This contact does not yet exist. Use ADD to add contact" << std::endl;
+		for (int i = 1; i < NUMBER_OF_FIELDS; i++)
+			std::cout << fields[i] << std::endl;
 		return ;
 	}
-	for (int i = 0; i < 5; i++)
-		std::cout << fields[i] << std::endl;
-};
-
-int Contact::printSearchFields(int index)
-{
-	std::string entry;
-
-	if (added == 0)
+	for (int i = 0; i < PHONE_NUMBER; i++)
 	{
-		if (index == 0)
-			std::cout << "No contacts have been added yet" << std::endl;
-		return (1);
-	}
-	std::cout << index << ": ";
-	for (int i = 0; i < 4; i++)
-	{
-		entry = fields[i].substr(0, 9);
-		std::cout << entry;
-		for (int leftover = 9 - entry.length(); leftover > 0; leftover--)
+		n = fields[i].length();
+		if (n > 9)
+			n = 9;
+		std::cout.write(fields[i].data(), n);
+		for (; n < 10; n++)
 			std::cout << '.';
-		if (i != 3)
-			std::cout << '|';
+		if (i == NICK_NAME)
+			break ;
+		std::cout << '|';
 	}
 	std::cout << std::endl;
-	return (0);
+}
+
+bool Contact::add(int index)
+{
+	std::stringstream ss;
+
+	ss << index;
+	fields[INDEX] = ss.str();
+	if (!get_field("First name: ", FIRST_NAME) || \
+		!get_field("Last name: ", LAST_NAME) || \
+		!get_field("Nick name: ", NICK_NAME) || \
+		!get_field("Phone number: ", PHONE_NUMBER) || \
+		!get_field("Darkest secret: ", DARKEST_SECRET))
+		return (false);
+	std::cout << "Contact has been added succesfully." << std::endl;
+	added = 1;
+	return (true);
 };
