@@ -2,7 +2,7 @@ SRC = tests.cpp Account.cpp
 INC = Account.hpp
 OBJ = $(SRC:%.cpp=obj/%.o)
 CC = c++
-FLAGS = -Wall -Wextra -g
+FLAGS = -Wall -Wextra -Werror
 STD = -std=c++98 -Iinc
 NAME = account
 

@@ -33,13 +33,15 @@ void	Contact::print(bool action)
 	{
 		n = fields[i].length();
 		if (n > 9)
-			n = 9;
-		std::cout.write(fields[i].data(), n);
-		for (; n < 10; n++)
-			std::cout << '.';
-		if (i == NICK_NAME)
-			break ;
-		std::cout << '|';
+			std::cout.write(fields[i].data(), 9) << '.';
+		else
+		{
+			for (size_t len = n; len < 10; len++)
+				std::cout << '.';
+			std::cout.write(fields[i].data(), n);
+		}
+		if (i < NICK_NAME)
+			std::cout << '|';
 	}
 	std::cout << std::endl;
 }
